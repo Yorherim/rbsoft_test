@@ -1,5 +1,6 @@
 .slider {
   margin: 0;
+  z-index: 0;
 }
 
 .img-container {
