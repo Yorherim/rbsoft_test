@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 import styles from "./ModalWindowRecord.module.css";
 import { Button } from "../ui/Button/Button.jsx";
@@ -7,6 +7,12 @@ import { ModalWindow } from "../ui/ModalWindow/ModalWindow.jsx";
 export const ModalWindowRecord = memo(({ active, setActive, addRecord }) => {
   console.log("rerender ModalWindowRecord");
   const [inputValue, setInputValue] = useState("");
+
+  const handlerAddRecord = () => {
+    addRecord(inputValue);
+    setInputValue("");
+    setActive(false);
+  };
 
   return (
     <ModalWindow active={active} setActive={setActive}>
@@ -19,7 +25,7 @@ export const ModalWindowRecord = memo(({ active, setActive, addRecord }) => {
       />
       <Button
         title={"Отправить"}
-        onClickHandler={() => addRecord(inputValue)}
+        onClickHandler={handlerAddRecord}
         className={styles.btn}
       />
     </ModalWindow>
