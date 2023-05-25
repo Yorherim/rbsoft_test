@@ -1,0 +1,20 @@
+{
+  "pictures": [
+    {
+      "id": "1",
+      "address": "https://mobimg.b-cdn.net/v3/fetch/a3/a33d8986ca7ef49e9480877cc35fb6e0.jpeg"
+    },
+    {
+      "id": "2",
+      "address": "https://w-dog.ru/wallpapers/16/17/463841920478901/retriver-sobaka-drug-fon.jpg"
+    },
+    {
+      "id": "3",
+      "address": "https://mobimg.b-cdn.net/v3/fetch/53/532b3c9d3ef26dc416b0194af23a764d.jpeg"
+    },
+    {
+      "id": "4",
+      "address": "https://mobimg.b-cdn.net/v3/fetch/bc/bc45d1305c40e2ec7d72c71080b34751.jpeg"
+    }
+  ]
+}

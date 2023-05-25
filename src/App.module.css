@@ -1,0 +1,14 @@
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+.table {
+  /*width: 50%;*/
+}
+
+.slider {
+  flex-basis: 50%;
+}
