@@ -1,21 +1,19 @@
 import { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./App.module.css";
-import { Slider, ModalWindow } from "./components";
+
 import data from "./data.json";
-import { Button } from "./components/ui/Button/Button.jsx";
-import { ModalWindowRecord } from "./components/ModalWindowRecord/ModalWindowRecord.jsx";
-import { useDispatch, useSelector } from "react-redux";
+import { Slider, ModalWindowRecord, Table } from "./components";
+import { Button } from "./components/ui";
 import { recordActions } from "./state/reducers/record.reducer.js";
 
 function App() {
-  console.log("rerender app");
   const dispatch = useDispatch();
   const records = useSelector((state) => state.records);
-  const [activeModalWindowRecord, setActiveModalWindowRecord] = useState(true);
+  const [activeModalWindowRecord, setActiveModalWindowRecord] = useState(false);
 
   const addRecord = useCallback((record) => {
-    console.log(record);
     dispatch(recordActions.addRecord(record));
   }, []);
 
@@ -25,12 +23,16 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <div>
+      <div className={styles["table-side"]}>
         <Button
           title={"Добавить запись"}
           onClickHandler={openModalWindowRecord}
+          className={styles["add-record-btn"]}
         />
-        <div className={styles.table}>table</div>
+
+        {records.length > 0 && <Table records={records} />}
+
+        <span className={styles.result}>Итого: {records.length}</span>
       </div>
 
       <Slider pictures={data.pictures} className={styles.slider} />

@@ -6,7 +6,6 @@ import "swiper/swiper-bundle.min.css";
 import styles from "./Slider.module.css";
 
 export const Slider = memo(({ pictures, className }) => {
-  console.log("rerender Slider");
   return (
     <Swiper
       modules={[Navigation, Pagination, A11y, Autoplay]}

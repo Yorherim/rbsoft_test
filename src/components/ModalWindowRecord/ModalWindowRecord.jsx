@@ -1,17 +1,27 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useState } from "react";
 
 import styles from "./ModalWindowRecord.module.css";
-import { Button } from "../ui/Button/Button.jsx";
-import { ModalWindow } from "../ui/ModalWindow/ModalWindow.jsx";
+import { Button, ModalWindow } from "../ui";
 
 export const ModalWindowRecord = memo(({ active, setActive, addRecord }) => {
-  console.log("rerender ModalWindowRecord");
   const [inputValue, setInputValue] = useState("");
+  const [errorInput, setErrorInput] = useState(false);
 
   const handlerAddRecord = () => {
+    if (inputValue.trim().length === 0) {
+      setErrorInput(true);
+      return;
+    }
     addRecord(inputValue);
     setInputValue("");
     setActive(false);
+  };
+
+  const handlerChangeInputValue = (e) => {
+    if (errorInput) {
+      setErrorInput(false);
+    }
+    setInputValue(e.currentTarget.value);
   };
 
   return (
@@ -20,9 +30,14 @@ export const ModalWindowRecord = memo(({ active, setActive, addRecord }) => {
       <input
         type="text"
         value={inputValue}
-        onChange={(e) => setInputValue(e.currentTarget.value)}
+        onChange={handlerChangeInputValue}
         className={styles.input}
+        onKeyUp={(e) => e.key === "Enter" && handlerAddRecord()}
+        autoFocus
       />
+      {errorInput && (
+        <span className={styles.error}>Нужно вести значение!!!</span>
+      )}
       <Button
         title={"Отправить"}
         onClickHandler={handlerAddRecord}

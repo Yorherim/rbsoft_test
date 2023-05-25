@@ -13,3 +13,7 @@
 .btn {
   float: right;
 }
+
+.error {
+  color: red;
+}

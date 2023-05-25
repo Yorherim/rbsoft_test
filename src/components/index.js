@@ -1,2 +1,3 @@
 export { Slider } from "./Slider/Slider.jsx";
-export { ModalWindow } from "./ui/ModalWindow/ModalWindow.jsx";
+export { ModalWindowRecord } from "./ModalWindowRecord/ModalWindowRecord.jsx";
+export { Table } from "./Table/Table.jsx";
